@@ -1,0 +1,103 @@
+#include <cmath>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "clock.h"
+#include "gamedata.h"
+#include "ioManager.h"
+#include <cstdlib>
+#include<cstring>
+#include<cstdio>
+
+
+using std::string;
+using std::sstream
+
+Clock& Clock::getInstance() {
+	if ( SDL_WasInit(SDL_INIT_VIDEO) == 0) {
+		throw std::string("Must init SDL before Clock");
+	}
+	static Clock clock; 
+	return clock;
+}
+
+Clock::Clock() :
+	ticks(0),
+	started(false), 
+	paused(false), 
+	sloMo(false), 
+	ticksAfter(SDL_GetTicks()),
+	ticksBefore(SDL_GetTicks())
+{
+	start();
+}
+
+Clock::Clock(const Clock& c) :
+	ticks(c.ticks), 
+	started(c.started), 
+	paused(c.paused), 
+	sloMo(c.sloMo), 
+	ticksAfter(c.ticksAfter),
+	ticksBefore(c.ticksBefore)
+
+{
+	start();
+}
+
+void Clock::draw() const {
+
+stringstream ss;
+ss << getFps();
+string str = ss.str();
+//char *intStr = itoa(getFps());
+
+IOManager::getInstance()->printMessageAt("print some massage", 10, 10);
+IOManager::getInstance()->printMessageAt(string(intStr),10,30);
+
+}
+
+void Clock::update() { 
+	ticksBefore = ticksAfter;
+	ticksAfter = SDL_GetTicks();
+	ticks=ticksAfter-ticksBefore;
+
+	if(sloMo){
+		ticks=ticks/2;
+	}
+	if(paused){
+		ticks =0;
+	}
+
+
+}
+
+unsigned int Clock::getTicksSinceLastFrame() const {
+	return ticks;
+}
+
+void Clock::toggleSloMo() {
+	sloMo = !sloMo;
+}
+
+int Clock::getFps() const { 
+	return 1000/ticks;
+
+//	return 0;
+}
+
+void Clock::start() { 
+	started = true; 
+	paused = false; 
+}
+
+void Clock::pause() { 
+	paused = !paused;
+//	std::cout << "pause: Not implemented yet" << std::endl;
+}
+
+void Clock::unpause() { 
+	paused= !paused;
+
+//std::cout << "unpause: Not implemented yet" << std::endl;
+}
+

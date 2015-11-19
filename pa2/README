@@ -1,0 +1,41 @@
+Name: Cong Qiu
+Clemson Email Address: congq@g.clemson.edu
+
+Project no: 3
+Project due date: September 25th, 2015
+
+Project description:
+To modify the given code to create my own visual effect accordingly.
+
+How you made your sprites:
+A few functions including speed randomization, was added to the class sprite. A vector of sprite was added as a menber to class Manager. In manager's constructor, after the vector's initailization, each member in the vector will be assigned the same sprite ,then call their own speed randomization function. Addition group of sprites will be added to the vector to generat one more fireworks after every certain interval. The number of sprites in the vector will grow with time, so there is will be  continous fireworks. Enjoy!
+
+bugs: Invalid sprites, that is, out of screen sprites, will not be deleteed until we quit the main program, so the performance will be bad after a few minuteis run.
+
+
+
+
+
+
+
+
+
+--------------------------------
+| Clock         |              |
+--------------------------------
+| Sprites       |              |
+--------------------------------
+| Singleton     |              |
+--------------------------------
+| game.xml      |              |
+--------------------------------
+| Leaks         |              |
+--------------------------------
+| F4/frames     |              |
+--------------------------------
+| Submission    |              |
+--------------------------------
+| README        |              |
+--------------------------------
+
+

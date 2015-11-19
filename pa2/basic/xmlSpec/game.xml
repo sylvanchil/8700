@@ -1,0 +1,86 @@
+<?xml version = "1.0"?>
+<GameData>
+<screenTitle>firework!</screenTitle>
+<projectTitle>FIREWORK!</projectTitle>
+<maxStringSize>50</maxStringSize>
+<username>congq</username>
+<frameMax>200</frameMax>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>854</width>
+  <height>480</height>
+</world>
+
+<back>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+</back>
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <unused>0</unused>
+</font>
+
+<greenorb>
+  <file>images/greenball.bmp</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>32</width>
+  <height>32</height>
+  <startLoc x="320" y="240"/>
+  <speedX>255</speedX>
+  <speedY>255</speedY>
+  <transparency>true</transparency>
+</greenorb>
+
+<singleSparkle>
+	<file>images/sparkle.bmp</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>8</width>
+  <height>8</height>
+  <startLoc x="200" y="150"/>
+  <speedX>480</speedX>
+  <speedY>480</speedY>
+  <transparency>true</transparency>
+
+</singleSparkle>
+
+<sparkleCount>500</sparkleCount>
+
+
+<backgroundpic>
+  <file>images/sky.png</file>
+  <srcX>0</srcX>
+  <srcY>0</srcY>
+  <width>1500</width>
+  <height>800</height>
+  <startLoc x="0" y="0"/>
+  <speedX>0</speedX>
+  <speedY>0</speedY>
+  <transparency>false</transparency>
+</backgroundpic>
+
+<physic>
+  <gravity>900</gravity>
+</physic>
+
+<setting>
+	<interval>300</interval>
+	<slomotimes>4</slomotimes>
+</setting>
+
+</GameData>
