@@ -5,11 +5,8 @@
 #include "ioManager.h"
 #include<vector>
 
-
-
 class Obj3DDrawable : public Drawable3D{
 public:
-	
 	
 	Obj3DDrawable(const std::string& n, const Point3d& pos, const Point3d& vel):
 		

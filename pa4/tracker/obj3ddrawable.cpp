@@ -1,4 +1,4 @@
-#include "obj3ddrawale.cpp"
+#include "obj3ddrawable.h"
 #include "ioManager.h"
 #include "viewpoint.h"
 

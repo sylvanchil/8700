@@ -2,11 +2,10 @@
 #include <vector>
 #include <SDL.h>
 #include "ioManager.h"
-#include "drawable.h"
+#include "3ddrawable.h"
 #include "clock.h"
 
 #include "background.h"
-#include "grounddrawable.h"
 
 class Manager {
 	public:
@@ -23,7 +22,7 @@ class Manager {
 	//	Viewport& viewport;
 
 		Background background;
-		std::list<Drawable*> sprites;
+		std::list<Drawable3D*> objs;
 
 		bool makeVideo;
 		int frameCount;

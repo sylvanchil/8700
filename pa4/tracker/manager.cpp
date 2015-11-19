@@ -6,8 +6,8 @@
 #include "manager.h"
 
 Manager::~Manager() { 
-	std::list<Drawable*>::const_iterator ptr = sprites.begin();
-	while ( ptr != sprites.end() ) {
+	std::list<Drawable3D*>::const_iterator ptr = objs.begin();
+	while ( ptr != objs.end() ) {
 		delete (*ptr);
 		++ptr;
 	}
@@ -20,7 +20,7 @@ Manager::Manager() :
 	screen( io.getScreen() ),
 	
 	background(),
-	sprites(),
+	objs(),
 
 	makeVideo( false ),
 	frameCount( 0 ),
@@ -52,8 +52,8 @@ void Manager::draw() const {
 	background.draw();
 
 	clock.draw();
-	std::list<Drawable*>::const_iterator ptr = sprites.begin();
-	while ( ptr != sprites.end() ) {
+	std::list<Drawable3D*>::const_iterator ptr = objs.begin();
+	while ( ptr !=objs.end() ) {
 		(*ptr)->draw();
 		++ptr;
 	}
@@ -82,8 +82,8 @@ void Manager::update() {
 	}
 	else {
 
-		std::list<Drawable*>::const_iterator ptr = sprites.begin();
-		while ( ptr != sprites.end() ) {
+		std::list<Drawable3D*>::const_iterator ptr = objs.begin();
+		while ( ptr != objs.end() ) {
 			(*ptr)->update(ticks);
 			++ptr;
 		}
