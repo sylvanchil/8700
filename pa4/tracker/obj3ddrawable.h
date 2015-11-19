@@ -21,7 +21,19 @@ public:
 
 	Obj3DDrawable(const std::string& n, const Point3d& pos, const Point3d& vel, const std::vector<Line3d> l):
 		Drawable3D(n,pos, vel),
-		lines(l){}
+		screen(IOManager::getInstance().getScreen()),
+		lines(l),
+		projectedLines(std::vector<Line2d>())
+		{}
+
+
+	Obj3DDrawable(const Obj3DDrawable& o3d):
+	Drawable3D( o3d.getName(), Point3d(o3d.X(),o3d.Y(), o3d.Z()), Point3d(  o3d.VX(),o3d.VY(), o3d.VZ()))
+	{
+	}
+	Obj3DDrawable& operator=(const Obj3DDrawable& o3d){
+	//todo
+	}
 
 	void draw() const;
 	void update(Uint32 ticks);

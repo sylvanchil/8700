@@ -24,7 +24,7 @@ public:
 	void Y(double y){position.y = y;};
 	void Z(double z){position.z = z;};
 
-	Drawable3D* getObjToTrack(){return objToTrack;}
+	const Drawable3D* getObjToTrack(){return objToTrack;}
 	void setObjToTrack(const Drawable3D* d3dptr ){ objToTrack = d3dptr;}
 
 private:
