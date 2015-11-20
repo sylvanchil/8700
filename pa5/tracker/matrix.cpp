@@ -57,23 +57,3 @@ double & Matrix::dataAt(int x, int y){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
