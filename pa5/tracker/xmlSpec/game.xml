@@ -1,0 +1,65 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation. 
+     So make sure to include your name as part of the screenTitle -->
+<screenTitle>3d projection Demo</screenTitle>
+<maxStringSize>50</maxStringSize>
+
+<frameCap>60</frameCap>
+<framesAreCapped>true</framesAreCapped>
+<frameMax>300</frameMax>
+<username>congq</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+  <screenDistance>320</screenDistance>
+</view>
+
+<ground>
+	<posiX>0</posiX>
+	<posiY>0</posiY>
+	<posiZ>1600</posiZ>
+	<lineDistance>40</lineDistance>
+	<length>2560</length>
+	<width>2560</width>
+
+</ground>
+
+<block>
+	<posiX>0</posiX>
+	<posiY>5</posiY>
+	<posiZ>640</posiZ>
+	<velX>0</velX>
+	<velY>0</velY>
+	<velZ>0</velZ>
+	<dimX>100</dimX>
+	<dimY>100</dimY>
+	<dimZ>100</dimZ>
+
+	<topspeed>200</topspeed>
+	<topbackspeed>100</topbackspeed>
+	<acceleration>1</acceleration>
+
+</block>
+
+<hud>
+<lifetime>3000</lifetime>
+</hud>
+
+<clock>
+  <locX>10</locX>
+  <locY>10</locY>
+</clock>
+
+
+<font name="font">
+  <file>font/dyslexic-bold.otf</file>
+  <size>16</size>
+  <red>0</red>
+  <green>0</green>
+  <blue>0</blue>
+  <unused>0</unused>
+</font>
+
+</GameData>
