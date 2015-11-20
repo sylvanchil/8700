@@ -4,7 +4,7 @@
 #include<string>
 #include<SDL.h>
 #include<iostream>
-#include"3dprojection/geo.h"
+#include"geo.h"
 
 class Drawable3D {
 
@@ -24,18 +24,26 @@ public:
 	double X(){return position.x;}
 	double Y(){return position.y;}
 	double Z(){return position.z;}
-	
+
+	Point3d getPosition(){return position;}
+
 	void X(double x){position.x= x;}
 	void Y(double y){position.y= y;}
 	void Z(double z){position.z= z;}
+	
+	void setPosition(Point3d p){position = p;}
 
 	double VX(){return velocity.x;}
 	double VY(){return velocity.y;}
 	double VZ(){return velocity.z;}
 	
+	Point3d getVelocity(){return velocity;}
+
 	void VX(double x){velocity.x= x;}
 	void VY(double y){velocity.y= y;}
 	void VZ(double z){velocity.z= z;}
+
+	void setVelocity(Point3d v){velocity = v;}
 
 	virtual bool collidedWith(const Drawable3D* )const{
 		throw std::string("No collision implemented;");

@@ -1,0 +1,18 @@
+Name : Cong Qiu
+Clemson Email Address: congq@g.clemson.edu
+
+Project no: 4
+Project due date: Nov. 13, 2015
+
+About project 4:
+In this project, I changed the structure a little bit. Drawable is replaced by 3DDrawable. Obj3dDrawable is derived class from 3DDrawable. All visual objects such as ground, cube, hud are derived classes of Obj3dDrawable. Since I did not render any picture to a surface in this project, frame is no longer needed. Viewport is replace by Viewpoint. Viewpoint could move around and look around in the 3d world,which mean it could track a Drawable as the previous Viewport does. But its position and direction is somehow fixed in this demo. Viewpoint also calculate the projection of 3d objects, utilizing  my coarsely implemented class matrix. 
+
+About final project:
+I have no idea how the final project should be:( More features would be continously added to this tiny homemade 3dprojection system, at least two of them are in schedule:1) draw a 3d surface. 2)draw with colors
+Also, I would try to generate the scence and enemies dynamicaly, and to read senario from a file, therefor the gaming time would be a bit longer.
+
+Bug:
+one bug is not shown in this project, but it actually exist,that is, lines behind the viewport will not be drawn correctly. 
+As a prototype, performance is not the first priority. Memory fragmentaton is a problem.
+
+

@@ -28,19 +28,38 @@ public:
 
 
 	Obj3DDrawable(const Obj3DDrawable& o3d):
-	Drawable3D( o3d.getName(), Point3d(o3d.X(),o3d.Y(), o3d.Z()), Point3d(  o3d.VX(),o3d.VY(), o3d.VZ()))
+	Drawable3D(o3d),
+
+		screen(IOManager::getInstance().getScreen()),
+		lines(o3d.lines),
+		projectedLines(o3d.projectedLines)
 	{
+	//todo 
 	}
 	Obj3DDrawable& operator=(const Obj3DDrawable& o3d){
 	//todo
+		screen= o3d.screen;
+		lines= o3d.lines;
+		projectedLines= o3d.projectedLines;
+		return *this;
 	}
 
+	std::vector<Line3d>& getLines(){return lines;}
+	std::vector<Line2d>& getProjectedLines(){return projectedLines;}
+	
+	SDL_Surface* getScreen(){
+	return screen;
+	}
+	
 	void draw() const;
-	void update(Uint32 ticks);
+	virtual	void update(Uint32 ticks);
+	
 private:
 	SDL_Surface* screen;
 	std::vector<Line3d> lines;	
 	std::vector<Line2d> projectedLines;
+	
+
 };
 
 

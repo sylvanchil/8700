@@ -2,7 +2,7 @@
 <GameData>
 <!-- screenTitle is also used to identify you and your animation. 
      So make sure to include your name as part of the screenTitle -->
-<screenTitle>matchman wandering</screenTitle>
+<screenTitle>3d projection Demo</screenTitle>
 <maxStringSize>50</maxStringSize>
 
 <frameCap>60</frameCap>
@@ -13,31 +13,45 @@
 <view>
   <width>854</width>
   <height>480</height>
+  <screenDistance>320</screenDistance>
 </view>
 
-<world>
-  <width>1000</width>
-  <height>960</height>
-</world>
+<ground>
+	<posiX>0</posiX>
+	<posiY>0</posiY>
+	<posiZ>1600</posiZ>
+	<lineDistance>40</lineDistance>
+	<length>2560</length>
+	<width>2560</width>
+
+</ground>
+
+<block>
+	<posiX>0</posiX>
+	<posiY>5</posiY>
+	<posiZ>640</posiZ>
+	<velX>0</velX>
+	<velY>0</velY>
+	<velZ>0</velZ>
+	<dimX>100</dimX>
+	<dimY>100</dimY>
+	<dimZ>100</dimZ>
+
+	<topspeed>200</topspeed>
+	<topbackspeed>100</topbackspeed>
+	<acceleration>1</acceleration>
+
+</block>
+
+<hud>
+<lifetime>3000</lifetime>
+</hud>
 
 <clock>
   <locX>10</locX>
   <locY>10</locY>
 </clock>
 
-
-<back>
-  <file>images/ground.png</file>
-  <red>193</red>
-  <green>205</green>
-  <blue>205</blue>
-  <factor>1</factor>
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>1600</width>
-  <height>800</height>
-  <transparency>false</transparency>
-</back>
 
 <font name="font">
   <file>font/dyslexic-bold.otf</file>
@@ -47,63 +61,5 @@
   <blue>0</blue>
   <unused>0</unused>
 </font>
-
-
-
-<cloud>
- <file>images/cloud.png</file>
-  <startLoc x="240" y="70"/>
-
-  <frames>1</frames>
-  <frameInterval>200</frameInterval>
-
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>200</width>
-  <height>100</height>
-  <speedX>0</speedX>
-  <speedY>0</speedY>
-  <paceratio>10</paceratio>
-  <transparency>true</transparency>
-
-</cloud>
-
-
-<grass>
- <file>images/grass.png</file>
-  <startLoc x="240" y="270"/>
-
-  <frames>3</frames>
-  <frameInterval>50</frameInterval>
-
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>50</width>
-  <height>40</height>
-  <speedX>0</speedX>
-  <speedY>0</speedY>
-  <paceratio>10</paceratio>
-  <transparency>true</transparency>
-
-</grass>
-
-<matchman>
- <file>images/matchman.png</file>
-  <startLoc x="120" y="225"/>
-
-  <frames>11</frames>
-  <frameInterval>50</frameInterval>
-
-  <srcX>0</srcX>
-  <srcY>0</srcY>
-  <width>50</width>
-  <height>80</height>
-  <speedX>40</speedX>
-  <speedY>0</speedY>
-  <paceratio>10</paceratio>
-  <transparency>true</transparency>
-
-</matchman>
-
 
 </GameData>

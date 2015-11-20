@@ -1,7 +1,7 @@
 #ifndef _VIEWPOINT_
 #define _VIEWPOINT_
 
-#include"3dprojection/geo.h"
+#include"geo.h"
 #include"3ddrawable.h"
 #include"gamedata.h"
 

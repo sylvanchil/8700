@@ -2,6 +2,7 @@
 #include <string>
 #include <deque>
 #include "vector2f.h"
+#include "hudobj3ddrawable.h"
 
 class Manager;
 

@@ -53,7 +53,7 @@ void Draw_AALine(SDL_Surface* screen, float x0, float y0,
 		thick = delta;
 	}
 
-	bool drawIt=true;
+	//bool drawIt=true;
 
 	//Cap ends off, X dimension
 	lower = 0.0f - thick;

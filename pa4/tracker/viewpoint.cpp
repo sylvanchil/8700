@@ -1,13 +1,15 @@
 #include"viewpoint.h"
+#include"matrix.h"
+#include<cmath>
 
-static Viewpoint& getInstance(){
+Viewpoint& Viewpoint::getInstance(){
 	static Viewpoint vp;
 	return vp;
 }
 
 Viewpoint::Viewpoint():
 	data(Gamedata::getInstance()),
-	position(0,0,0), 
+	position(0,320,0), 
 	direction(0,0,1),
 	screenDistance(data.getXmlFloat("view/screenDistance")),
 	objToTrack(NULL){
@@ -15,11 +17,11 @@ Viewpoint::Viewpoint():
 	}
 
 Point2d Viewpoint::lookAtPoint3D( const Point3d& p3d){
-	Point3d mp3d = point3DInView(p3d);
+	Point3d mp3d = point3DinView(p3d);
 	return Point2d(screenDistance*mp3d.x/mp3d.z, screenDistance*mp3d.y/ mp3d.z);
 }
 
-Point3d point3DinView(const Point3d& p3d){
+Point3d Viewpoint::point3DinView(const Point3d& p3d){
 	double posi[] = {p3d.x, p3d.y, p3d.z, 1};
 	Matrix posiVector(1, 4, posi);
 	//fill in the matrix
