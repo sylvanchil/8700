@@ -129,10 +129,11 @@ void Block3DDrawable::update(Uint32 ticks){
 
 	//turning left
 */
-	updateLinesPosition();
+//	updateLinesPosition();
 
 	Obj3DDrawable::update(ticks);
 
+	//updateLinesPosition();
 //	turningRight = false;
 //	turningLeft = false;
 	accelerating = false;

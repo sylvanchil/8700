@@ -106,8 +106,8 @@ void Manager::draw() const {
 	hud->setSecond(clock.getSeconds());
 	hud->setFPS(clock.getFps());
 	background.draw();
-	
-//	clock.draw();
+
+	//	clock.draw();
 	std::list<Drawable3D*>::const_iterator ptr = objs.begin();
 	while ( ptr !=objs.end() ) {
 		(*ptr)->draw();
@@ -188,6 +188,8 @@ void Manager::play() {
 				if(keystate[SDLK_m]){
 					//trigger minimap
 				}
+
+
 			}		
 
 		}
@@ -222,11 +224,10 @@ void Manager::play() {
 				block->moveWest();
 				//	block->turnRight();
 			}
-	
-			if(keystate[SDLK_u]){
-				std::cout << "u pressed" << std::endl;
-				block->rotate('z', 0.1);
-			}
+
+				if(keystate[SDLK_u]){
+					block->rotate('z', 0.0001);
+				}
 
 		}
 
