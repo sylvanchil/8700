@@ -53,6 +53,7 @@ public:
 
 	void rotate(char direction, double angle);
 
+	void updateProjectedLines();
 	void draw() const;
 	virtual	void update(Uint32 ticks);
 	

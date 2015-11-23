@@ -5,7 +5,7 @@
 #include "gamedata.h"
 #include "manager.h"
 #include "blockobj3ddrawable.h"
-
+#include "paperplaneobj3ddrawable.h"
 
 
 Manager::~Manager() { 
@@ -88,9 +88,16 @@ Manager::Manager() :
 			Point3d(0,0,0),
 			Gamedata::getInstance().getXmlInt("hud/lifetime")
 			);
-	objs.push_back(ground);
+
+//	objs.push_back(ground);
 	objs.push_back(block);
 	objs.push_back(hud);
+	objs.push_back(new Plane3DDrawable(
+		"paperplane",
+		Point3d(0,0,800),
+		Point3d(0,0,0)
+	));
+
 	//	sprites.push_back( new MultiSprite("matchman") );
 
 	//add sprite 
@@ -225,9 +232,15 @@ void Manager::play() {
 				//	block->turnRight();
 			}
 
-				if(keystate[SDLK_u]){
-					block->rotate('z', 0.0001);
-				}
+			if(keystate[SDLK_u]){
+				block->rotate('x', 0.0001);
+			}
+			if(keystate[SDLK_j]){
+				block->rotate('y', 0.0001);
+			}
+			if(keystate[SDLK_k]){
+				block->rotate('z', 0.0001);
+			}
 
 		}
 

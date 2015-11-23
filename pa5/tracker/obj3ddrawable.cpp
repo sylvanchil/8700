@@ -13,7 +13,7 @@ void Obj3DDrawable::draw()const{
 	for(std::vector<Line2d>::const_iterator i = projectedLines.begin(); i != projectedLines.end(); i ++){
 		Draw_AALine(screen, round(screen->w/2- (*i).p1.x),round(screen->h/2-(*i).p1.y), round(screen->w/2-(*i).p2.x), round(screen->h/2-(*i).p2.y) , 0.1, BLACK);
 	}
-	
+
 
 }
 
@@ -26,22 +26,53 @@ void Obj3DDrawable::update(Uint32 ticks){
 			Point3d(X()+VX()/1000*ticks, Y()+VY()/1000*ticks, Z()+VZ()/1000*ticks )
 			);
 
+	double delterX = VX()/1000*ticks;
+	double delterY = VY()/1000*ticks;
+	double delterZ = VZ()/1000*ticks;
+
+
+	for(std::vector<Line3d>::iterator i = lines.begin(); i != lines.end();i  ++){
+		(*i).p1.x+= delterX;
+		(*i).p1.y+= delterY;
+		(*i).p1.z+= delterZ;
+
+		(*i).p2.x+= delterX;
+		(*i).p2.y+= delterY;
+		(*i).p2.z+= delterZ;
+	}
+
+
+	//	updateProjectedLines();
+
 	///	std::cout << Z() << std::endl;
 	//	std::cout << VZ()<< std::endl;
 	//
 	ticks = ticks;//delete this line
-
-	projectedLines.clear();
-	for(std::vector<Line3d>::iterator i = lines.begin();i != lines.end();i ++){
-		projectedLines.push_back(Viewpoint::getInstance().lookAtLine3D(*i));
-	}
-
 }
 
 
 void Obj3DDrawable::rotate(char axis, double angle){
 	double cosTheta = cos(angle);
 	double sinTheta = sin(angle);
+
+	double shiftToCenter[16]= {
+		1,0,0,X(),
+		0,1,0,Y(),
+		0,0,1,Z(),
+		0,0,0,1
+	};
+
+
+	double shiftBack[16]= {
+		1,0,0,-X(),
+		0,1,0,-Y(),
+		0,0,1,-Z(),
+		0,0,0,1
+	};
+	
+	Matrix STCMatrix(4,4,shiftToCenter);
+	Matrix SBMatrix(4,4, shiftBack);
+
 
 	double spin[16] = {
 		1,0,0,0,
@@ -75,6 +106,8 @@ void Obj3DDrawable::rotate(char axis, double angle){
 
 	Matrix spinMatrix(4,4,spin);
 
+	STCMatrix= STCMatrix* spinMatrix;
+	STCMatrix = STCMatrix* SBMatrix;
 	//	double posiVectorData[4]={0,0,0,1};
 	//	Matrix posiVector(1,4, posiVectorData);
 
@@ -85,19 +118,19 @@ void Obj3DDrawable::rotate(char axis, double angle){
 			lines[i].p1.z,
 			1};
 		Matrix p1PosiVector(1,4, p1Posi);
-		p1PosiVector= spinMatrix*p1PosiVector;
+		p1PosiVector= STCMatrix*p1PosiVector;
 		lines[i].p1.x= p1PosiVector.dataAt(0,0);
 		lines[i].p1.y= p1PosiVector.dataAt(0,1);
 		lines[i].p1.z= p1PosiVector.dataAt(0,2);
-		
-		
+
+
 		double p2Posi[] = {
 			lines[i].p2.x, 	
 			lines[i].p2.y, 	
 			lines[i].p2.z,
 			1};
 		Matrix p2PosiVector(1,4, p2Posi);
-		p2PosiVector= spinMatrix*p2PosiVector;
+		p2PosiVector= STCMatrix*p2PosiVector;
 		lines[i].p2.x= p2PosiVector.dataAt(0,0);
 		lines[i].p2.y= p2PosiVector.dataAt(0,1);
 		lines[i].p2.z= p2PosiVector.dataAt(0,2);
@@ -126,7 +159,15 @@ void Obj3DDrawable::rotate(char axis, double angle){
 		}*/
 }
 
+void Obj3DDrawable::updateProjectedLines(){
 
+	projectedLines.clear();
+	for(std::vector<Line3d>::iterator i = lines.begin();i != lines.end();i ++){
+		projectedLines.push_back(Viewpoint::getInstance().lookAtLine3D(*i));
+	}
+
+
+}
 
 
 

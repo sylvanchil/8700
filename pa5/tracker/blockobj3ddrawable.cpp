@@ -133,6 +133,7 @@ void Block3DDrawable::update(Uint32 ticks){
 
 	Obj3DDrawable::update(ticks);
 
+	Obj3DDrawable::updateProjectedLines();
 	//updateLinesPosition();
 //	turningRight = false;
 //	turningLeft = false;
