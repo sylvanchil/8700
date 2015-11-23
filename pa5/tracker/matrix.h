@@ -39,6 +39,9 @@ public:
 	Matrix operator+(const Matrix& m);
 	
 	double & dataAt(int x, int y);
+	void setDataAt(int x, int y, double e){
+		data[y*width+x] = e;
+	}
 	
 private:
 	int width;

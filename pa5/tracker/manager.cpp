@@ -222,7 +222,11 @@ void Manager::play() {
 				block->moveWest();
 				//	block->turnRight();
 			}
-
+	
+			if(keystate[SDLK_u]){
+				std::cout << "u pressed" << std::endl;
+				block->rotate('z', 0.1);
+			}
 
 		}
 

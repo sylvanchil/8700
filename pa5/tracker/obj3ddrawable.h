@@ -50,7 +50,9 @@ public:
 	SDL_Surface* getScreen(){
 	return screen;
 	}
-	
+
+	void rotate(char direction, double angle);
+
 	void draw() const;
 	virtual	void update(Uint32 ticks);
 	
