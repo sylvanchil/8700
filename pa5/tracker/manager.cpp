@@ -95,7 +95,19 @@ Manager::Manager() :
 //	objs.push_back(block);
 	objs.push_back(hud);
 	objs.push_back(plane);
-	//	sprites.push_back( new MultiSprite("matchman") );
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(10,30,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(100,100,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(700,250,2200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(800,350,600), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(30,320,500), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(100,230,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(120,330,3200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(130,430,500), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(350,530,800), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(260,630,900), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(340,130,1000), Point3d(0,0,0)));
+	
+//	sprites.push_back( new MultiSprite("matchman") );
 
 	//add sprite 
 	//	sprites.push_back(new Background());
