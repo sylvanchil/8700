@@ -6,12 +6,12 @@ Plane3DDrawable::Plane3DDrawable(const std::string& n, const Point3d& p, const P
 
 	Obj3DDrawable(n, p, vel)
 {
-	Point3d A(0,0,940);
-	Point3d B(0,-20,900-40);
-	Point3d C(-40,0,900-40);
-	Point3d D(-20,10,900-40);
-	Point3d E(20,10,900-40);
-	Point3d F(40,0,900-40);
+	Point3d A(X()+0,Y()+0,Z()+40);
+	Point3d B(X()+0,Y()-20,Z()-40);
+	Point3d C(X()-40,Y()+0,Z()-40);
+	Point3d D(X()-20,Y()+10,Z()-40);
+	Point3d E(X()+20,Y()+10,Z()-40);
+	Point3d F(X()+40,Y()+0,Z()-40);
 
 	getLines().clear();
 	getLines().push_back(Line3d(A, C));

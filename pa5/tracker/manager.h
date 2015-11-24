@@ -11,6 +11,8 @@
 #include "blockobj3ddrawable.h"
 #include "hudobj3ddrawable.h"
 
+#include "paperplaneobj3ddrawable.h"
+
 class Manager {
 	public:
 		Manager ();
@@ -27,6 +29,8 @@ class Manager {
 		Block3DDrawable* block;
 		Ground3DDrawable* ground;
 		HUDObj3DDrawable* hud;
+
+		Plane3DDrawable* plane;
 
 		Background background;
 		std::list<Drawable3D*> objs;

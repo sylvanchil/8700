@@ -25,7 +25,8 @@ Manager::Manager() :
 	block(),
 	ground(),
 	hud(),
-
+	plane(),
+	
 	background(),
 	objs(),
 
@@ -89,15 +90,11 @@ Manager::Manager() :
 			Gamedata::getInstance().getXmlInt("hud/lifetime")
 			);
 
+	plane = new Plane3DDrawable("paperplane", Point3d(0,0,900), Point3d(0,0,0));
 //	objs.push_back(ground);
-	objs.push_back(block);
+//	objs.push_back(block);
 	objs.push_back(hud);
-	objs.push_back(new Plane3DDrawable(
-		"paperplane",
-		Point3d(0,0,800),
-		Point3d(0,0,0)
-	));
-
+	objs.push_back(plane);
 	//	sprites.push_back( new MultiSprite("matchman") );
 
 	//add sprite 
@@ -233,13 +230,13 @@ void Manager::play() {
 			}
 
 			if(keystate[SDLK_u]){
-				block->rotate('x', 0.0001);
+				plane->rotate('x', 0.0001);
 			}
 			if(keystate[SDLK_j]){
-				block->rotate('y', 0.0001);
+				plane->rotate('y', 0.0001);
 			}
 			if(keystate[SDLK_k]){
-				block->rotate('z', 0.0001);
+				plane->rotate('z', 0.0001);
 			}
 
 		}
