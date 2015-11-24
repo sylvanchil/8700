@@ -90,7 +90,7 @@ Manager::Manager() :
 			Gamedata::getInstance().getXmlInt("hud/lifetime")
 			);
 
-	plane = new Plane3DDrawable("paperplane", Point3d(0,0,900), Point3d(0,0,0));
+	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,0));
 //	objs.push_back(ground);
 //	objs.push_back(block);
 	objs.push_back(hud);
