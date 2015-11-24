@@ -12,6 +12,8 @@
 #include "hudobj3ddrawable.h"
 
 #include "paperplaneobj3ddrawable.h"
+#include "viewpoint.h"
+
 
 class Manager {
 	public:
@@ -24,13 +26,15 @@ class Manager {
 		Clock& clock;
 
 		SDL_Surface * const screen;
-	//	World world;
-	//	Viewport& viewport;
+		//	World world;
+//		Viewport& viewport;
+//		Viewpoint vp;
 		Block3DDrawable* block;
 		Ground3DDrawable* ground;
 		HUDObj3DDrawable* hud;
 
 		Plane3DDrawable* plane;
+
 
 		Background background;
 		std::list<Drawable3D*> objs;

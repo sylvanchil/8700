@@ -22,11 +22,11 @@ Manager::Manager() :
 	clock( Clock::getInstance() ),
 	screen( io.getScreen() ),
 
+	//vp(),
 	block(),
 	ground(),
 	hud(),
 	plane(),
-	
 	background(),
 	objs(),
 
@@ -90,7 +90,7 @@ Manager::Manager() :
 			Gamedata::getInstance().getXmlInt("hud/lifetime")
 			);
 
-	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,0));
+	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,20));
 //	objs.push_back(ground);
 //	objs.push_back(block);
 	objs.push_back(hud);
@@ -148,6 +148,8 @@ void Manager::makeFrame() {
 void Manager::update() {
 	clock.update();
 	Uint32 ticks = clock.getTicksSinceLastFrame();
+
+	Viewpoint::getInstance().update();
 
 	if (ticks == 0){
 		updated = false;

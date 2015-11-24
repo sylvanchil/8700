@@ -100,4 +100,6 @@ void Viewpoint::draw()const{
 
 void Viewpoint::update(){
 	//todo
+//	position.z += 1;	
+
 }
