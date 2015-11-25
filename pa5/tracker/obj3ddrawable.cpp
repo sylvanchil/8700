@@ -7,14 +7,16 @@
 
 void Obj3DDrawable::draw()const{
 	//todo
-
+	Point3d p = Viewpoint::getInstance().point3DinView(getPosition());
+	if(p.z > 100){
+	
 	const Uint32 BLACK= SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
 
 	for(std::vector<Line2d>::const_iterator i = projectedLines.begin(); i != projectedLines.end(); i ++){
 		Draw_AALine(screen, round(screen->w/2- (*i).p1.x),round(screen->h/2-(*i).p1.y), round(screen->w/2-(*i).p2.x), round(screen->h/2-(*i).p2.y) , 0.1, BLACK);
 	}
 
-
+}
 }
 
 void Obj3DDrawable::update(Uint32 ticks){
@@ -137,7 +139,29 @@ void Obj3DDrawable::rotate(char axis, double angle){
 
 	}
 
+	double vel[]= {
+		VX(),
+		VY(),
+		VZ(),
+		1
+	};
+	Matrix velVec(1,4,vel);
+	velVec = spinMatrix*velVec;
+	VX(velVec.dataAt(0,0));
+	VY(velVec.dataAt(0,1));
+	VZ(velVec.dataAt(0,2));
 
+	Point3d bu = getBU();
+	double bodyuprightdata[] = {
+		bu.x,
+		bu.y,
+		bu.z,
+		1
+	};
+	Matrix buVec(1,4,bodyuprightdata);
+	buVec = spinMatrix* buVec;
+	setBU(Point3d(buVec.dataAt(0,0), buVec.dataAt(0,1), buVec.dataAt(0,2)));
+	
 	/*	for(std::vector<Line3d>::iterator i = lines.begin(); i != lines.end();i ++){
 		posiVector.setDataAt(0,0, (*i).p1.x);
 		posiVector.setDataAt(0,1, (*i).p1.y);

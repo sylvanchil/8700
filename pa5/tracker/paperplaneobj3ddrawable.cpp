@@ -27,6 +27,21 @@ Plane3DDrawable::Plane3DDrawable(const std::string& n, const Point3d& p, const P
 
 }
 
+void Plane3DDrawable::noseUp(){
+
+
+}
+void Plane3DDrawable::rotateACW(){
+
+
+}
+
+void Plane3DDrawable::rotateCW(){
+
+
+}
+
+
 void Plane3DDrawable::update(Uint32 ticks){
 
 	Obj3DDrawable::update(ticks);

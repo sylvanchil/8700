@@ -10,7 +10,7 @@ class Drawable3D {
 
 public:
 	Drawable3D(const std::string& n, const Point3d& pos, const Point3d& vel):
-		name(n), position(pos), velocity(vel){
+		name(n), position(pos), velocity(vel),bodyUpright(Point3d(0,1,0)){
 	}
 
 	virtual ~Drawable3D(){}
@@ -21,11 +21,11 @@ public:
 	virtual void draw() const = 0;
 	virtual void update(Uint32 ticks) = 0;
 
-	double X(){return position.x;}
-	double Y(){return position.y;}
-	double Z(){return position.z;}
+	double X()const {return position.x;}
+	double Y()const {return position.y;}
+	double Z()const {return position.z;}
 
-	Point3d getPosition(){return position;}
+	Point3d getPosition()const{return position;}
 
 	void X(double x){position.x= x;}
 	void Y(double y){position.y= y;}
@@ -45,6 +45,9 @@ public:
 
 	void setVelocity(Point3d v){velocity = v;}
 
+	Point3d getBU(){return bodyUpright;}
+	void setBU(Point3d b){bodyUpright = b;}
+
 	virtual bool collidedWith(const Drawable3D* )const{
 		throw std::string("No collision implemented;");
 	}
@@ -54,6 +57,7 @@ private:
 	std::string name;
 	Point3d position;
 	Point3d velocity;
+	Point3d bodyUpright;
 
 };
 

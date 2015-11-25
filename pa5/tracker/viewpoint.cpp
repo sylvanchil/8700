@@ -11,6 +11,7 @@ Viewpoint::Viewpoint():
 	data(Gamedata::getInstance()),
 	position(0,320,0), 
 	direction(0,0,1),
+	bodyU(0,1,0),
 	screenDistance(data.getXmlFloat("view/screenDistance")),
 	objToTrack(NULL){
 
@@ -100,4 +101,11 @@ void Viewpoint::draw()const{
 
 void Viewpoint::update(){
 	//todo
+	double x = objToTrack->X();
+	double y = objToTrack->Y()+320;
+	double z = objToTrack->Z()-640;
+	X(x);
+	Y(y);
+	Z(z);
+
 }

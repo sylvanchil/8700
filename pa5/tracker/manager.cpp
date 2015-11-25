@@ -26,7 +26,7 @@ Manager::Manager() :
 	ground(),
 	hud(),
 	plane(),
-	
+
 	background(),
 	objs(),
 
@@ -90,30 +90,31 @@ Manager::Manager() :
 			Gamedata::getInstance().getXmlInt("hud/lifetime")
 			);
 
-	plane = new Plane3DDrawable("paperplane", Point3d(0,0,900), Point3d(0,0,0));
-//	objs.push_back(ground);
-//	objs.push_back(block);
+	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,50));
+	//	objs.push_back(ground);
+	//	objs.push_back(block);
 	objs.push_back(hud);
 	objs.push_back(plane);
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(10,30,1200), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(100,100,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-100,100,1200), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(700,250,2200), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(800,350,600), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-800,350,600), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(30,320,500), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(100,230,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-100,230,1200), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(120,330,3200), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(130,430,500), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-130,430,500), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(350,530,800), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(260,630,900), Point3d(0,0,0)));
-	objs.push_back(new Plane3DDrawable("paperplane", Point3d(340,130,1000), Point3d(0,0,0)));
-	
-//	sprites.push_back( new MultiSprite("matchman") );
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-260,630,900), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-340,130,1000), Point3d(0,0,0)));
+
+	//	sprites.push_back( new MultiSprite("matchman") );
 
 	//add sprite 
 	//	sprites.push_back(new Background());
 
 	//viewpoint
 
+	Viewpoint::getInstance().setObjToTrack(plane);
 
 }
 
@@ -164,7 +165,7 @@ void Manager::update() {
 		}
 
 		// viewpoint update
-
+		Viewpoint::getInstance().update();
 		updated = true;
 
 	}
@@ -221,6 +222,21 @@ void Manager::play() {
 			}
 
 			if(keystate[SDLK_w]){
+				plane->rotate('x', 0.0001);
+			}
+
+			if(keystate[SDLK_s]){
+				plane->rotate('x', -0.0001);
+			}
+
+			if(keystate[SDLK_a]){
+				plane->rotate('z', -0.0001);
+			}
+
+			if(keystate[SDLK_d]){
+				plane->rotate('z', 0.0001);
+			}
+/*			if(keystate[SDLKK_w]){
 				block->moveNorth();
 				//	block->accelerate();
 			}
@@ -240,6 +256,8 @@ void Manager::play() {
 				block->moveWest();
 				//	block->turnRight();
 			}
+*/
+
 
 			if(keystate[SDLK_u]){
 				plane->rotate('x', 0.0001);

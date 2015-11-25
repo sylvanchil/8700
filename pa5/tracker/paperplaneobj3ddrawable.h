@@ -4,8 +4,16 @@
 
 class Plane3DDrawable: public Obj3DDrawable{
 public:
+	
 	Plane3DDrawable(const std::string& n, const Point3d& p, const Point3d& v);
+	
+	void noseUp();
+	void rotateACW();
+	void rotateCW();
+	
 	void update(Uint32 ticks);
+	
+
 };
 
 #endif

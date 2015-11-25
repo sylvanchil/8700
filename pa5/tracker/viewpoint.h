@@ -16,6 +16,7 @@ public:
 	Point2d lookAtPoint3D(const Point3d& p);
 	Line2d lookAtLine3D(const Line3d& l);
 
+	Point3d point3DinView(const Point3d& p3d);
 	double X(){return position.x;};
 	double Y(){return position.y;};
 	double Z(){return position.z;};
@@ -26,13 +27,17 @@ public:
 
 	const Drawable3D* getObjToTrack(){return objToTrack;}
 	void setObjToTrack(const Drawable3D* d3dptr ){ objToTrack = d3dptr;}
+	
+	double getScreenDistance(){return screenDistance;}
+	void setSD(double sd){screenDistance = sd;}
+	
 
 private:
 	const Gamedata& data;
 	
 	Point3d position;
 	Point3d direction;
-
+	Point3d bodyU;
 	//Point3D relate position to obj
 
 
@@ -40,7 +45,6 @@ private:
 
 	const Drawable3D* objToTrack;
 
-	Point3d point3DinView(const Point3d& p3d);
 
 	Viewpoint();
 	Viewpoint(const Viewpoint&);
