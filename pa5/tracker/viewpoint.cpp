@@ -101,11 +101,15 @@ void Viewpoint::draw()const{
 
 void Viewpoint::update(){
 	//todo
+<<<<<<< HEAD
 	double x = objToTrack->X();
 	double y = objToTrack->Y()+320;
 	double z = objToTrack->Z()-640;
 	X(x);
 	Y(y);
 	Z(z);
+=======
+//	position.z += 1;	
+>>>>>>> 8ab4a2856f56538ea6d07c6f31e4553a4ac2cdca
 
 }
