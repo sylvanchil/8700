@@ -134,21 +134,27 @@ void Manager::collisionDetect(){
 std::list<Drawable3D*>::iterator obji= objs.begin();
 	while(obji != objs.end()){
 		if(*obji != hud && *obji != plane){
+	
+			if((*obji)->collidedWith(plane)){
+				if(!godMode){
+				std::cout << "collided with plane" << std::endl;
+			}}
+		
 			for(std::list<Bullet*>::iterator bulleti = bp.getBulletList().begin();
 					bulleti != bp.getBulletList().end(); 
 					bulleti ++
 			   ){
 				if((*obji)->collidedWith(*bulleti)){
-					
+					objs.remove(*obji);
+					obji--;
 					std::cout << "collided" << std::endl;
 				}
-
 			}
 
-			if((*obji)->collidedWith(plane)){
-				if(!godMode){
-				std::cout << "collided with plane" << std::endl;
-			}}
+//			if((*obji)->collidedWith(plane)){
+//				if(!godMode){
+//				std::cout << "collided with plane" << std::endl;
+//			}}
 		}
 		obji ++;
 
