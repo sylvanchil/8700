@@ -13,15 +13,17 @@ void HUDObj3DDrawable::update(Uint32 ticks){
 void HUDObj3DDrawable::draw()const{	
 	if(lifeTime> 0){
 		Obj3DDrawable::draw();
-	
-		IOManager::getInstance().printMessageAt("3d projection demo", 20,10);
 		IOManager::getInstance().printMessageAt("w,a,s,d to move cube", 20,30);
-		IOManager::getInstance().printMessageAt("hud will dispear in 3 sec", 20,50);
+		IOManager::getInstance().printMessageAt("space to shoot", 20,50);
 		//		std::cout << "hud displayed()" << std::endl;
 		IOManager::getInstance().
 		printMessageValueAt("Seconds: ", seconds, 20, 70);
-	IOManager::getInstance().
+		IOManager::getInstance().
 		printMessageValueAt("fps: ", fps, 20, 90);
+	IOManager::getInstance().
+		printMessageValueAt("bulletpool: ", bullet, 20, 110);
+		IOManager::getInstance().
+		printMessageValueAt("freeList: ", freebullet, 20, 130);
 	
 	}
 }

@@ -12,12 +12,17 @@
 #include "hudobj3ddrawable.h"
 
 #include "paperplaneobj3ddrawable.h"
+#include "bulletpool.h"
+
+#include "objexplode.h"
 
 class Manager {
 	public:
 		Manager ();
+		
 		~Manager ();
 		void play();
+
 	private:
 		const bool env;
 		const IOManager& io;
@@ -32,6 +37,8 @@ class Manager {
 
 		Plane3DDrawable* plane;
 
+		BulletPool bp;
+
 		Background background;
 		std::list<Drawable3D*> objs;
 
@@ -40,14 +47,18 @@ class Manager {
 		const std::string username;
 		const std::string title;
 		const int frameMax;
-
+		
+		bool godMode;
+		
 		bool updated;
 		void draw() const;
 		void update();
 
+		void reset();
+
+		void collisionDetect();
+
 		Manager(const Manager&);
 		Manager& operator=(const Manager&);
 		void makeFrame();
-
-
 };

@@ -101,11 +101,18 @@ void Viewpoint::draw()const{
 
 void Viewpoint::update(){
 	//todo
-	double x = objToTrack->X();
-	double y = objToTrack->Y()+320;
-	double z = objToTrack->Z()-640;
+	double dx = objToTrack->VX();
+	double dy = objToTrack->VY();
+	double dz = objToTrack->VZ();
+
+	double x = objToTrack->X()-10*dx;
+	double y = objToTrack->Y()-20*dy;
+	double z = objToTrack->Z()-10*dz;
 	X(x);
 	Y(y);
 	Z(z);
 
+	DX(-dx);
+	DY(dy);
+	DZ(dz);
 }

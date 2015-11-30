@@ -1,6 +1,8 @@
 #ifndef _GEO_H_
 #define _GEO_H_
 
+#include<cmath>
+
 class Point2d{
 	public:
 		double x;
@@ -39,6 +41,10 @@ class Point3d{
 		Point3d(const Point3d & p)
 			:		x(p.x), y (p.y), z(p.z)
 		{}
+
+		double distanceTo(const Point3d& p2){
+			return sqrt(pow(x-p2.x, 2)+ pow(y - p2.y, 2)+ pow(z - p2.z,2));
+		}
 };
 
 

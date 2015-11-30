@@ -7,13 +7,18 @@ public:
 	
 	Plane3DDrawable(const std::string& n, const Point3d& p, const Point3d& v);
 	
+	//to be implemented
 	void noseUp();
 	void rotateACW();
 	void rotateCW();
-	
+
+	void shoot();
+
 	void update(Uint32 ticks);
 	
-
+private:
+	int cd;
+	
 };
 
 #endif

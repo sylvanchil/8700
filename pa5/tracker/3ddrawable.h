@@ -33,9 +33,9 @@ public:
 	
 	void setPosition(Point3d p){position = p;}
 
-	double VX(){return velocity.x;}
-	double VY(){return velocity.y;}
-	double VZ(){return velocity.z;}
+	double VX()const {return velocity.x;}
+	double VY()const {return velocity.y;}
+	double VZ()const {return velocity.z;}
 	
 	Point3d getVelocity(){return velocity;}
 
@@ -48,8 +48,8 @@ public:
 	Point3d getBU(){return bodyUpright;}
 	void setBU(Point3d b){bodyUpright = b;}
 
-	virtual bool collidedWith(const Drawable3D* )const{
-		throw std::string("No collision implemented;");
+	virtual bool collidedWith(const Drawable3D* d){
+		return position.distanceTo(d->getPosition())< 20;	
 	}
 	
 

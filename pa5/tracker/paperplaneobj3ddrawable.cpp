@@ -4,7 +4,8 @@
 
 Plane3DDrawable::Plane3DDrawable(const std::string& n, const Point3d& p, const Point3d& vel):
 
-	Obj3DDrawable(n, p, vel)
+	Obj3DDrawable(n, p, vel),
+	cd(0)
 {
 	Point3d A(X()+0,Y()+0,Z()+40);
 	Point3d B(X()+0,Y()-20,Z()-40);
@@ -41,6 +42,13 @@ void Plane3DDrawable::rotateCW(){
 
 }
 
+void Plane3DDrawable::shoot(){
+	if (cd < 0){
+		//shoot
+	}
+	else cd--;
+	
+}
 
 void Plane3DDrawable::update(Uint32 ticks){
 

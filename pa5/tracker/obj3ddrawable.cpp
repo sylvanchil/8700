@@ -43,12 +43,6 @@ void Obj3DDrawable::update(Uint32 ticks){
 		(*i).p2.z+= delterZ;
 	}
 
-
-	//	updateProjectedLines();
-
-	///	std::cout << Z() << std::endl;
-	//	std::cout << VZ()<< std::endl;
-	//
 	ticks = ticks;//delete this line
 }
 
@@ -192,21 +186,6 @@ void Obj3DDrawable::updateProjectedLines(){
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -6,6 +6,7 @@
 #include "manager.h"
 #include "blockobj3ddrawable.h"
 #include "paperplaneobj3ddrawable.h"
+#include "objexplode.h"
 
 
 Manager::~Manager() { 
@@ -27,6 +28,8 @@ Manager::Manager() :
 	hud(),
 	plane(),
 
+	bp(),
+
 	background(),
 	objs(),
 
@@ -35,6 +38,7 @@ Manager::Manager() :
 	username(  Gamedata::getInstance().getXmlStr("username") ),
 	title( Gamedata::getInstance().getXmlStr("screenTitle") ),
 	frameMax( Gamedata::getInstance().getXmlInt("frameMax") ),
+	godMode(false),
 	updated(false)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0) {
@@ -42,46 +46,6 @@ Manager::Manager() :
 	}
 	SDL_WM_SetCaption(title.c_str(), NULL);
 	atexit(SDL_Quit);
-
-
-	ground=	new Ground3DDrawable("ground",
-			Point3d(
-				Gamedata::getInstance().getXmlFloat("ground/posiX"),
-				Gamedata::getInstance().getXmlFloat("ground/posiY"),
-				Gamedata::getInstance().getXmlFloat("ground/posiZ")
-				), 
-			Point3d(0,0,0),
-			Gamedata::getInstance().getXmlInt("ground/width"),
-			Gamedata::getInstance().getXmlInt("ground/length"),
-			Gamedata::getInstance().getXmlInt("ground/lineDistance")
-			);	
-
-
-	//todo
-	block= 		new Block3DDrawable(
-			"cube",
-			Point3d(
-				Gamedata::getInstance().getXmlFloat("block/posiX"),
-				Gamedata::getInstance().getXmlFloat("block/posiY"),
-				Gamedata::getInstance().getXmlFloat("block/posiZ")
-				),
-			Point3d(
-				Gamedata::getInstance().getXmlFloat("block/velX"),
-				Gamedata::getInstance().getXmlFloat("block/velY"),
-				Gamedata::getInstance().getXmlFloat("block/velZ")
-
-				),
-			Point3d(
-				Gamedata::getInstance().getXmlFloat("block/dimX"),
-				Gamedata::getInstance().getXmlFloat("block/dimY"),
-				Gamedata::getInstance().getXmlFloat("block/dimZ")
-
-				),
-			Gamedata::getInstance().getXmlFloat("block/topspeed"),
-			//			Gamedata::getInstance().getXmlFloat("block/topbackspeed"),
-			Gamedata::getInstance().getXmlFloat("block/acceleration")
-
-				);
 
 	hud = new HUDObj3DDrawable(
 			"hud", 
@@ -91,10 +55,11 @@ Manager::Manager() :
 			);
 
 	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,50));
-	//	objs.push_back(ground);
-	//	objs.push_back(block);
+
 	objs.push_back(hud);
 	objs.push_back(plane);
+
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(0,0,1200), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(10,30,1200), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-100,100,1200), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(700,250,2200), Point3d(0,0,0)));
@@ -107,16 +72,113 @@ Manager::Manager() :
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-260,630,900), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-340,130,1000), Point3d(0,0,0)));
 
-	//	sprites.push_back( new MultiSprite("matchman") );
+	//viewpoint
 
-	//add sprite 
-	//	sprites.push_back(new Background());
+	//	objs.push_back(new ObjExplosion(plane));
+
+	Viewpoint::getInstance().setObjToTrack(plane);
+}
+
+void Manager::reset(){
+
+	delete hud;
+	hud = new HUDObj3DDrawable(
+			"hud", 
+			Point3d(0,0,0),
+			Point3d(0,0,0),
+			Gamedata::getInstance().getXmlInt("hud/lifetime")
+			);
+
+	delete plane;
+	plane = new Plane3DDrawable("paperplane", Point3d(0,0,640), Point3d(0,0,50));
+	/*	
+		std::list<Drawable3D*>::iterator i = objs.begin();
+		i ++;
+		i++;
+		while(i != objs.end()){
+		delete *i;
+		}
+	 */
+	objs.clear();
+
+	objs.push_back(hud);
+	objs.push_back(plane);
+
+
+
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(0,0,1200), Point3d(0,0,0)));
+
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(10,30,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-100,100,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(700,250,2200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-800,350,600), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(30,320,500), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-100,230,1200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(120,330,3200), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-130,430,500), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(350,530,800), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-260,630,900), Point3d(0,0,0)));
+	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-340,130,1000), Point3d(0,0,0)));
+
 
 	//viewpoint
 
 	Viewpoint::getInstance().setObjToTrack(plane);
 
+	bp = BulletPool();
+
 }
+
+
+void Manager::collisionDetect(){
+std::list<Drawable3D*>::iterator obji= objs.begin();
+	while(obji != objs.end()){
+		if(*obji != hud && *obji != plane){
+			for(std::list<Bullet*>::iterator bulleti = bp.getBulletList().begin();
+					bulleti != bp.getBulletList().end(); 
+					bulleti ++
+			   ){
+				if((*obji)->collidedWith(*bulleti)){
+					
+					std::cout << "collided" << std::endl;
+				}
+
+			}
+
+			if((*obji)->collidedWith(plane)){
+				if(!godMode){
+				std::cout << "collided with plane" << std::endl;
+			}}
+		}
+		obji ++;
+
+
+
+	}
+/*	for(std::list<Drawable3D*>::iterator obji= objs.begin(); obji != objs.end();obji ++){
+		if(*obji != hud && *obji != plane){
+			for(std::list<Bullet*>::iterator bulleti = bp.getBulletList().begin();
+					bulleti != bp.getBulletList().end(); 
+					bulleti ++
+			   ){
+				if((*obji)->collidedWith(*bulleti)){
+					objs.remove(*obji);
+					std::cout << "collided" << std::endl;
+				}
+
+			}
+
+			if((*obji)->collidedWith(plane)){
+				std::cout << "collided with plane" << std::endl;
+			}
+		}
+
+
+	}*/
+}
+
+
+
 
 void Manager::draw() const {
 
@@ -130,6 +192,8 @@ void Manager::draw() const {
 		(*ptr)->draw();
 		++ptr;
 	}
+
+	bp.draw();
 
 	SDL_Flip(screen);
 }
@@ -145,10 +209,10 @@ void Manager::makeFrame() {
 	SDL_SaveBMP(screen, filename.c_str());
 }
 
-
 void Manager::update() {
 	clock.update();
 	Uint32 ticks = clock.getTicksSinceLastFrame();
+
 
 	if (ticks == 0){
 		updated = false;
@@ -166,9 +230,17 @@ void Manager::update() {
 
 		// viewpoint update
 		Viewpoint::getInstance().update();
+
+		bp.update(ticks);
+
 		updated = true;
 
 	}
+
+	hud->setBullet(bp.bulletSize());
+	hud->setFreebullet(bp.freeSize());
+
+	collisionDetect();
 
 }
 
@@ -176,7 +248,6 @@ void Manager::play() {
 	SDL_Event event;
 	bool done = false;
 	clock.start();
-
 
 	//move chacter wasd
 	while ( not done ) {
@@ -190,6 +261,9 @@ void Manager::play() {
 				}
 				if (keystate[SDLK_s]) {
 					clock.toggleSloMo();
+				}
+				if(keystate[SDLK_g]){
+					godMode= !godMode;
 				}
 				if (keystate[SDLK_F4] && !makeVideo) {
 					std::cout << "Making video frames" << std::endl;
@@ -206,7 +280,14 @@ void Manager::play() {
 					//trigger minimap
 				}
 
+				if(keystate[SDLK_SPACE]){
+					std::cout << "shoot \n";
+					bp.shoot(plane->getPosition(), plane->getVelocity());
+				}
 
+				if(keystate[SDLK_r]){
+					reset();
+				}
 			}		
 
 		}
@@ -222,53 +303,20 @@ void Manager::play() {
 			}
 
 			if(keystate[SDLK_w]){
-				plane->rotate('x', 0.0001);
+				plane->rotate('x', 0.00005);
 			}
 
 			if(keystate[SDLK_s]){
-				plane->rotate('x', -0.0001);
+				plane->rotate('x', -0.00005);
 			}
 
 			if(keystate[SDLK_a]){
-				plane->rotate('z', -0.0001);
+				plane->rotate('z', -0.00005);
 			}
 
 			if(keystate[SDLK_d]){
-				plane->rotate('z', 0.0001);
+				plane->rotate('z', 0.00005);
 			}
-/*			if(keystate[SDLKK_w]){
-				block->moveNorth();
-				//	block->accelerate();
-			}
-			if(keystate[SDLK_s]){
-				block ->moveSouth();
-				//			block->goback();
-			}
-
-			if(keystate[SDLK_a]){
-
-				block->moveEast();
-				//	block->turnLeft();
-			}
-
-			if(keystate[SDLK_d]){
-
-				block->moveWest();
-				//	block->turnRight();
-			}
-*/
-
-
-			if(keystate[SDLK_u]){
-				plane->rotate('x', 0.0001);
-			}
-			if(keystate[SDLK_j]){
-				plane->rotate('y', 0.0001);
-			}
-			if(keystate[SDLK_k]){
-				plane->rotate('z', 0.0001);
-			}
-
 		}
 
 

@@ -9,7 +9,9 @@ class HUDObj3DDrawable: public Obj3DDrawable{
 			Obj3DDrawable(n, pos, vel),
 			lifeTime(lt),
 			seconds(0),
-			fps(0){
+			fps(0),
+			bullet(0),
+			freebullet(0){
 
 				getProjectedLines().clear();
 				getProjectedLines().push_back(Line2d(
@@ -39,7 +41,9 @@ class HUDObj3DDrawable: public Obj3DDrawable{
 
 		void setSecond(int s){seconds= s;}
 		void setFPS(int f){fps = f;}
-
+		void setBullet(int b){bullet= b;}
+		void setFreebullet(int fb){freebullet = fb;}
+		
 		void renewLifeTime(){
 			lifeTime = 3000;
 		}
@@ -50,7 +54,8 @@ class HUDObj3DDrawable: public Obj3DDrawable{
 		int lifeTime;
 		int seconds;
 		int fps;
-
+		int bullet;
+		int freebullet;
 };
 
 #endif
