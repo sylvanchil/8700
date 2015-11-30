@@ -74,7 +74,7 @@ Manager::Manager() :
 
 	//viewpoint
 
-		objs.push_back(new ObjExplosion(plane));
+		objs.push_back(new ObjExplosion(Point3d(0,0,2000), Point3d(0,0,0)));
 
 	Viewpoint::getInstance().setObjToTrack(plane);
 }
@@ -145,6 +145,7 @@ std::list<Drawable3D*>::iterator obji= objs.begin();
 					bulleti ++
 			   ){
 				if((*obji)->collidedWith(*bulleti)){
+				//	objs.push_back(new ObjExplosion(*obji));
 					objs.remove(*obji);
 					obji--;
 					std::cout << "collided" << std::endl;

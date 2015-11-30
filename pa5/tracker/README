@@ -10,7 +10,7 @@ key 'space' to shoot.
 key 'g' to toggle god mode.
 key 'r' to reset the game.
 key 'f1' to toggle hud.
-explosion effect is not implemented yet, but collision detection works fine. When player crash into enemies plane, it shows "collide the plane", when bullet hits enemeis, it shows "collided"
+explosion effect is not implemented yet, but collision detection works fine. When player crash into enemies plane, plane will dispear, when bullet hits enemeis, enemeies will dispear.
 
 Bug:
 1.player control is not correctly implemeted.
