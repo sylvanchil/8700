@@ -23,9 +23,6 @@ class Sparkle: public Drawable3D{
 			screen(IOManager::getInstance().getScreen()),
 			livetime(2000)
 	{}
-
-
-
 		Sparkle& operator=(const Sparkle& s){
 			Sparkle s2 = s;
 
