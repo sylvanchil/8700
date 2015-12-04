@@ -2,7 +2,7 @@
 
 
 void BulletPool::shoot(const Point3d& pos, const Point3d& vel){
-	Point3d bulletVel(vel.x* 4, vel.y* 4, vel.z *4);
+	Point3d bulletVel(vel.x*4 , vel.y* 4, vel.z *4);
 
 	if(freeList.empty())
 	{

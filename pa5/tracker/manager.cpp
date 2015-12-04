@@ -74,7 +74,7 @@ Manager::Manager() :
 
 	//viewpoint
 
-		objs.push_back(new ObjExplosion(Point3d(0,0,2000), Point3d(0,0,0)));
+//		objs.push_back(new ObjExplosion(Point3d(0,0,2000), Point3d(0,0,0)));
 
 	Viewpoint::getInstance().setObjToTrack(plane);
 }
