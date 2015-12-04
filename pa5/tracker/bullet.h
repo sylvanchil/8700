@@ -9,6 +9,7 @@ public:
 	Obj3DDrawable(n, pos, vel),
 	livetime(10000)
 	{
+		setColor(  SDL_MapRGB(getScreen()->format, 0xff, 0x00, 0x00));
 		getLines().push_back(Line3d(Point3d(X()-VX()/3, Y()-VY()/3,Z()-VZ()/3), getPosition()));
 	}
 
@@ -19,6 +20,7 @@ public:
 	}
 
 	void draw()const {
+
 		Obj3DDrawable::draw();
 	}
 
