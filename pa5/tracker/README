@@ -11,6 +11,8 @@ key 'g' to toggle god mode.
 key 'r' to reset the game.
 key 'f1' to toggle hud.
 
+Object pooling is applied in two places, the first one is in bullet, the other one is in explosion effect. My explosion solution is different from majority, instead of tear apart the object, I wipe the collided object off the list, then make explosionpool generate an explosion at the place where the wiped out object was located.
+
 Bug:
 1.player control is not correctly implemeted.
 3.As a prototype, performance is not the first priority. Memory fragmentaton is a problem.
