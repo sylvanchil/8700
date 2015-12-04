@@ -1,0 +1,33 @@
+Name : Cong Qiu
+Clemson Email Address: congq@g.clemson.edu
+
+Project no: 6
+Project due date: DEC 4th, 2015
+
+About game:
+The name of this game is PaperPlaneFight. Your goal is to destroy all other paperplane by using the laser gun. Control is listed below:
+	key 'w','a','s','d' to move around
+	key 'space' to shoot. 
+	key 'g' to toggle god mode.
+	key 'r' to reset the game.
+	key 'i' to auto aim. (HIGHLY recommended!)
+	key 'f1' to toggle hud.
+
+have fun!
+
+About the project:
+	This is the final project of cpsc8700. 
+	1.Video is included.
+	2.AI lies in auto aim. when auto aim is troggled, the bullet will aim at the closest target and fly direct toward it.
+	Object pooling is applied in two places, the first one is in bullet, the other one is in explosion effect. My explosion solution is different from majority, instead of tear apart the object, I wipe the collided object off the list, then make explosionpool generate an explosion at the place where the wiped out object was located.
+
+known Bug:
+1.bug in explosion pooling.
+2.Occasionaly crash with segementation fault, 
+3.As a prototype, performance is not the first priority. Memory fragmentaton is a problem.
+
+attribute:
+	Laser.wav by teddy937 is licensed under the Attribution Noncommercial License.
+	boom.wav by bareform is licensed under the Attribution Noncommercial License.
+	happy.mp3 by setuniman is licensed under the Attribution Noncommercial License.
+	sound.h and sound.cpp writen by B.Malloy
