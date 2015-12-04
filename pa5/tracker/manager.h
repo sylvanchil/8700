@@ -13,8 +13,7 @@
 
 #include "paperplaneobj3ddrawable.h"
 #include "bulletpool.h"
-
-#include "objexplode.h"
+#include "explosionpool.h"
 
 class Manager {
 	public:
@@ -38,7 +37,8 @@ class Manager {
 		Plane3DDrawable* plane;
 
 		BulletPool bp;
-
+		ExplosionPool ep;
+	
 		Background background;
 		std::list<Drawable3D*> objs;
 

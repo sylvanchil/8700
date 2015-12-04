@@ -6,7 +6,7 @@ class Plane3DDrawable: public Obj3DDrawable{
 public:
 	
 	Plane3DDrawable(const std::string& n, const Point3d& p, const Point3d& v);
-	
+
 	//to be implemented
 	void noseUp();
 	void rotateACW();

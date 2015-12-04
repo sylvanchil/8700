@@ -8,7 +8,7 @@
 void Obj3DDrawable::draw()const{
 	//todo
 	Point3d p = Viewpoint::getInstance().point3DinView(getPosition());
-	if(p.z > 100){
+	if((p.z > 100 && Viewpoint::getInstance().DZ() > 0) ||( p.z < -100 && Viewpoint::getInstance().DZ()<0)){
 
 //		const Uint32 BLACK= SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
 

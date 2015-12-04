@@ -7,7 +7,7 @@
 #include "blockobj3ddrawable.h"
 #include "paperplaneobj3ddrawable.h"
 #include "objexplode.h"
-
+#include "explosion.h"
 
 Manager::~Manager() { 
 	std::list<Drawable3D*>::const_iterator ptr = objs.begin();
@@ -29,7 +29,7 @@ Manager::Manager() :
 	plane(),
 
 	bp(),
-
+	ep(),
 	background(),
 	objs(),
 
@@ -72,6 +72,8 @@ Manager::Manager() :
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-260,630,900), Point3d(0,0,0)));
 	objs.push_back(new Plane3DDrawable("paperplane", Point3d(-340,130,1000), Point3d(0,0,0)));
 
+
+//	objs.push_back(new Explosion("explosion,", Point3d(0,0,1300), Point3d(0,0,0)));
 	//viewpoint
 
 //		objs.push_back(new ObjExplosion(Point3d(0,0,2000), Point3d(0,0,0)));
@@ -146,9 +148,11 @@ std::list<Drawable3D*>::iterator obji= objs.begin();
 			   ){
 				if((*obji)->collidedWith(*bulleti)){
 				//	objs.push_back(new ObjExplosion(*obji));
+					ep.explode((*obji)->getPosition(), (*obji)->getVelocity());
+					delete (*obji);
 					objs.remove(*obji);
 					obji--;
-					std::cout << "collided" << std::endl;
+
 				}
 			}
 
@@ -201,7 +205,7 @@ void Manager::draw() const {
 	}
 
 	bp.draw();
-
+	ep.draw();
 	SDL_Flip(screen);
 }
 
@@ -239,7 +243,7 @@ void Manager::update() {
 		Viewpoint::getInstance().update();
 
 		bp.update(ticks);
-
+		ep.update(ticks);
 		updated = true;
 
 	}
